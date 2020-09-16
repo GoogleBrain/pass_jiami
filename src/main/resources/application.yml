@@ -1,0 +1,21 @@
+spring:
+  # 数据库连接
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/ddddd
+    username: root
+    # ==========driud实现数据库密码加密=========
+    # 生成的加密后的密码（原密码 King1234.）
+    password: PzwruZEQWiBeuUIl73PIR6vh2GLZuHYJPAt84RGTTIf57P5PaKmWARjYc87mJPwGyheYxgibNjhtwx5qRFTxMg==
+    druid:
+      # 启用监控页面
+      stat-view-servlet:
+        enabled: true
+      # 启用ConfigFilter
+      filter:
+        config:
+          enabled: true
+      # 配置 connection-properties，启用加密，配置公钥。
+      connection-properties: config.decrypt=true;config.decrypt.key=${public-key}
+
+# druid生成的公钥
+public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIcHDIpZKhLQ5OBKJqw+bZv9jJ7d6ku2c7OzQgzyflZjvBPOxNJ6gYbtGtvjrhIPgyhTpTrWQbecF8SaDRORRMUCAwEAAQ==
